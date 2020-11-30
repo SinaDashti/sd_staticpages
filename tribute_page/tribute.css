@@ -59,7 +59,7 @@ img {
 	width: 100%;
 	background: rgb(238, 238, 238);
 	display: grid;
-	grid-template-columns: 2fr 3fr 2fr;
+	grid-template-columns: 2fr 6fr 2fr;
 }
 
 ul {
