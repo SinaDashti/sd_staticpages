@@ -6,38 +6,50 @@
       <title>Document</title>
    </head>
    <body>
+
+     <header id="header" class="header">
+      <!-- <a href="/" class="logo">CORP</a> -->
+      <input class="menu-btn" type="checkbox" id="menu-btn" />
+      <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
+      <nav id="nav-bar" class="nav-bar">
+         <a href="/" class="logo"><img id="header-img" class="logo" src="restaurant-logo.jpg" alt="logo" ></a>
+         <ul class="menu">
+            <li><a class="nav-link" href="#section-part">Section</a></li>
+            <li><a class="nav-link" href="#video">Video</a></li>
+            <li><a class="nav-link" href="#other-part">Other</a></li>
+            <li><a class="nav-link" href="#form">Form</a></li>
+         </ul>
+      </nav>
+   </header>
       <div class="container">
-         <header id="header">
-            <p>Logo</p>
-            <!-- <img id="header-img" src="restaurant-logo.jpg" alt="logo" > -->
-            <nav id="nav-bar">
-               <ul>
-                  <li><a class="nav-link" href="#section-part">Section</a></li>
-                  <li><a class="nav-link" href="#video">Video</a></li>
-                  <li><a class="nav-link" href="#other-part">Other</a></li>
-                  <li><a class="nav-link" href="#form">Form</a></li>
-               </ul>
-            </nav>
-         </header>
-         <div id="intro">
+         <!-- INTRO -->
+         <div id="intro" class="intro">
             <h1>intro</h1>
          </div>
-         <div id="section-part">
+         <!-- SECTIONS -->
+         <div id="section-part" class="section">
             <section id="sec1">1</section>
             <section id="sec2">2</section>
             <section id="sec3">3</section>
          </div>
-         <video id="video" src="" controls>1</video>
-         <div id="other-part">
+         <!-- VIDEO -->
+         <div class="iframe">
+            <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/9YffrCViTVk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+         </div>
+         <!-- OTHER -->
+         <div id="other-part" class="other">
             <section id="other1">other 1</section>
             <section id="other2">other 2</section>
             <section id="other3">other 3</section>
          </div>
-         <form id="form" action= "https://www.freecodecamp.com/email-submit">
-            <input id="email" type="email" name="email" placeholder="Please enter your email" required>
-            <input id="submit" type="submit" value="Send">
+         <!-- FORM -->
+         <form id="form" class="form" action= "https://www.freecodecamp.com/email-submit">
+            <input id="email"  class="email" type="email" name="email" placeholder="Please enter your email" required>
+            <input id="submit" class="btn" type="submit" value="Send">
          </form>
-         <footer id="footer">footer</footer>
+         <!-- FOOTER -->
+         <footer id="footer" class="footer">footer</footer>
       </div>
    </body>
 </html>
