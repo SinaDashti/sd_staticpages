@@ -1,108 +1,251 @@
-/* img{
-    width:50px;
-    height:50px;
-} */
-
-.container {
-	display: grid;
-	height: 100vh;
-	grid-template-columns: 1fr repeat(4, 2fr);
-	/* grid-template-rows: 0.2fr 1.5fr 1.2fr 0.8fr; */
-  grid-template-areas: 
-  "header header header header header" 
-  "intro intro intro intro intro" 
-  "section-part section-part section-part section-part section-part" 
-  "section-part section-part section-part section-part section-part" 
-  "section-part section-part section-part section-part section-part" 
-  "video video video video video" 
-  "other-part other-part other-part other-part other-part" 
-  "form form form form form" 
-  "footer footer footer footer footer";
-	grid-gap: 0.2rem;
-}
-
-#header {
-	background: #84ffff;
-	grid-area: header;
-	display: grid;
-	grid-template-columns: repeat(10, 1fr);
+body{
 	margin: 0;
-}
-
-p {
-	background: #ff18ec;
-	grid-area: p;
-	grid-column: 1/3;
-	padding: 0;
-	margin: 0;
-}
-
-#intro {
-	background: darkblue;
-	grid-area: intro;
-	text-align: center;
-}
-
-#nav-bar {
-	background: #ec0404;
-	grid-area: nav;
-	grid-column: 4/12;
+	background-color: #bbb;
 	box-sizing: border-box;
-	/* align-items: end; */
-	justify-self: stretch;
-	/* margin: auto auto auto auto; */
 }
 
-ul {
-	display: grid;
-	grid-template-columns: repeat(4, 2fr);
-	align-items: center;
-	justify-items: center;
+a{
+	color:#000;
 }
 
-#section-part {
-	background: #d3d4cb;
-	grid-area: section-part;
-	/* align-items: center; */
-	/* justify-items: center; */
-	display: grid;
-	grid-template-rows: repeat(3, 1fr);
+.header{
+	background-color: #fff;
+	/* gives shadow below the header
+	zoom for being able to see  */
+	box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+	position: fixed;
+	width: 100%;
+	/* in this way when we scroll the nav remain at top fixed 
+	now, we put it, 3, but it can be more if we have more 
+	content*/
+	z-index: 4;
 }
 
-#sec1,
-#sec2,
-#sec3 {
-	margin-top: 5px;
+.header nav ul{
+	margin: 0;
 	padding: 0;
-	border: red solid;
+	/* for real removing the black dots  */
+	list-style: none;
+
+	overflow: hidden;
+	background-color: white;
+
 }
 
-#sec3 {
-	margin-bottom: 5px;
+
+.header ul a {
+	/* the reason for this is
+	the "a" element by defaul is 
+	inline, without this option
+	the mouse should goes exactly on the element to be clickable. */
+	display: block;
+	/* outline: 1px solid red; */
+	padding: 10px;
+	/* border-right: 3px solid blue; */
+	/* remove underline under link */
+	text-decoration: none;
 }
 
-#video {
-	background: #0cec2a;
-	grid-area: video;
-	align-self: center;
-	margin: auto;
+.header .nav-bar ul a:hover{
+	background-color: rgb(198, 212, 253);
 }
 
-#other-part {
-	background: brown;
-	grid-area: other-part;
+.header .nav-bar .logo{
+	float: left;
+	display: block;
+	max-width: 100%;
+	max-height: 40px;
+	padding: 5px 5px;
+}
+
+
+/* pay attention we are start by mobile design */
+.header .nav-bar .menu{
+	/* that forces the menu to below the 
+	left floated title/logo */
+	clear: both;
+	/* the menu collapse and need click to be open */
+	max-height: 0;
+	transition: max-height 0.2s ease-out;
+}
+
+.header .menu-icon{
+	padding: 28px 20px;
+	/* because this is acting as parent
+	container pf span, we are moving span by some 
+	absolute positioning.
+	parent has relative so we can use absolute on his child*/
+	position: relative;
+	/* puts menu to the right */
+	float: right;
+	cursor: pointer;
+}
+
+.header .menu-icon .nav-icon{
+	background: #333;
+	/* span by default is inline
+	we give it block to can add width and height */
+	display: block;
+	height: 2px;
+	width: 18px;
+	position: relative;
+	transition: background 0.2s ease-out;
+}
+
+.header .menu-icon .nav-icon:before,
+.header .menu-icon .nav-icon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .nav-icon:before {
+  top: 5px;
+}
+
+.header .menu-icon .nav-icon:after {
+  top: -5px; 
+} 
+
+/* this is the check box, but we do not want to be seen,
+but acyually it is there! */
+.header .menu-btn{
+	display: none;
+}
+
+/* 
+the class of .menu if we go look at
+our HTML again that's the actual
+unordered list, so we're changing the
+height of the UL which is why it's going
+big, now it's automatically animating because
+if you recall clear up on our menu,
+we added a transition of max height so
+we already have the transition set up in
+the original selector. that's why down
+here on our selector here in the pseudo
+selector for checked.
+
+this checked is of course a pseudo
+selector it's kind of like the hover so
+what this means is when the menu button
+is in it's checked state okay let's go
+back and look and see what menu button
+is so menu button is the input tag so
+remember the input tag is still right
+here it's just hidden so the reason why
+this works is a little bit convoluted.
+~ .nav-bar .menu looks for next available sibling when .menu-btn:checked is checked!
+*/
+.header .menu-btn:checked ~ .nav-bar .menu{
+	max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon{
+	background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon::before{
+	transform: rotate(-45deg);
+	top: 0;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon::after{
+	transform: rotate(45deg);
+	top: 0;
+}
+
+
+@media (min-width: 450px) {
+	.header li {
+	  float: left;
+	}
+	.header li a {
+	  padding: 20px 25px;
+	}
+	.header .nav-bar .menu {
+	  clear: none;
+	  float: right;
+	  max-height: none;
+	}
+	.header .menu-icon {
+	  display: none;
+	}
+  }
+
+/* ***************************** */
+/* *********Start Grid********** */
+/* ***************************** */
+
+.container{
+	background-color: rgb(243, 204, 204);
+	height: 150%;
 	display: grid;
-	grid-template-columns: repeat(3, 3fr);
-	align-items: center;
+	grid-template-columns: repeat(11, 1fr); 
+	grid-template-rows: repeat(24, 1fr);
+	grid-gap: 2px; 
+}
+
+.intro{
+	display: grid;
+	grid-area: 3/1/4/12;
+	border: #000 solid 1px;
+	/* top: 0; */
+	justify-content: center;
+}
+
+.section{
+	display: grid;
+	border: #000 solid 1px;
+	grid-area: 4/1/9/12;
+	margin: 0;
+	padding: 0;
+}
+
+.iframe{
+	display: grid;
+	grid-area: 12/5/14/8;
+	position: relative;
+	width: 100%;
+	padding-bottom: 56.25%; 
+	height: 0;
+	border: #000 solid 1px;
 	justify-items: center;
+	align-self: center;
+	
+  }
+  .iframe iframe{
+	display: flex;
+	position: absolute;
+	/* top:0;
+	left: 0; */
+	padding: 0;
+	max-width: 100%;
+	max-height: 100%;
+	/* justify-content: center; */
+	align-self: center;
+	/* border: #000 solid 1px; */
+  }
+
+
+.other{
+	display: grid;
+	grid-area: 17/1/22/12;
+	border: #000 solid 1px;
 }
 
-#form {
-	background: #ff6464;
-	grid-area: form;
+.form{
+	display: grid;
+	grid-area: 22/5/24/8;
+	border: #000 solid 1px;
 }
 
-footer {
-	background: #ffed47;
-	grid-area: footer;
+.footer{
+	display: grid;
+	border: #000 solid 1px;
+	grid-area: 24/1/25/12;
 }
