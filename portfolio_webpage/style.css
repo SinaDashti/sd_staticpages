@@ -1,14 +1,117 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
 }
 
-nav {
-  position: fixed;
+.container{
+    display:grid;
+    width: 100vw;
+    border: green solid 3px;
 }
 
-#welcome-section {
-  height: 100vh;
+.container .navbar {
+    position: fixed;
+    height: 10vh;
+    width: 100vw;
+    z-index: 4;
+    background-color: black;
+    background: rgb(168, 118, 233);
+   
+
+}
+
+.container .navbar ul{
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: crimson solid 1px;
+    padding: 20px;
+}
+
+.container .welcome-section {
+    display: grid;
+    height: 100vh;
+    background-color: blanchedalmond;
+    border: red solid 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .welcome-section .welcome,
+.container .welcome-section .info{
+    text-align: center;
+    border: blueviolet solid 1px;
+}
+
+.container .welcome-section .info{
+    text-align: center;
+    border: blueviolet solid 1px;
+}
+
+
+
+.container .projects{
+    border: black solid 3px;
+    display: grid;
+	grid-template-columns: 1fr 1fr;
+    justify-items: center;
+
+}
+
+.container .footer{
+    border: yellow solid 3px;
+}
+
+.container .projects .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: 10px;
+    text-align: center;
+    font-family: arial;
+    transition: 0.3s;
+    
+    /* height: 500px; */
+}
+  
+.container .projects .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+.container .projects .card img{
+    width: 100%;
+}
+
+.container .projects .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+  
+.container .projects .card button:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 700px){
+    
+    .container .projects{
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .container .projects .card {
+        max-width: 250px;
+        margin: 10px;
+        transition: 0.3s;
+
+    }
+    
 }
